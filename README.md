@@ -8,7 +8,7 @@ all processes have been finished.
 ![Scheduler Output](./images/scheduler-output.png)
 
 #### Output
-* Each line of output (apart from the final statistics) begins with a timestamp of the event
+* Each line of output (apart from the final performance statistics) begins with a timestamp of the event
 * Whenever the scheduler switches processes, it outputs a line with the `RUNNING` field, along with:
   - Process id
   - Remaining time until the process is complete
@@ -19,6 +19,11 @@ all processes have been finished.
   - The number of remaining process
 * Whenever memory is full (or if virtual memory is enabled, a processes memory requirement - 4 isn't available), a line is outputted with the `EVICTED`
 field, along with the addresses of the pages that were evicted
+* When all processes have been completed performance is summarised with:
+  - Throughput denotes the average (rounded up), minimum and maximum number of processes completed in sequential, non-overlapping 60 second intervals
+  - Turnaround time is the average time (in seconds, rounded up to an integer) between the time a process arrives and is subsequently completed.
+  - Time overhead denotes the maximum and average time overhead, where overhead is defined as the turnaround time of the process divided by its job time
+  - Makespan is the time in seconds where the simulation ended
 
 #### Scheduling Algorithms Implemented:
 * First come first served
