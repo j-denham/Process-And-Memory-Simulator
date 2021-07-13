@@ -1,0 +1,32 @@
+Custom Scheduling - Shortest First (sf)
+
+	- Consistently performs better than ff and rr by all metrics.
+
+	- For all cases rr did significantly worse so will only compare sf and ff.
+
+	- Gap between sf and ff increases with higher average memory across all processes.
+
+	- Higher the average job time, smaller the gap between ff and sf. Contrapositive is also true.
+
+	- Higher the range in job time, bigger the gap between ff and sf.
+
+	- ff and sf perform the same when job time of all processes is equal.
+
+	- Unfair in the sense that longer processes get continuously pushed to the back
+
+
+
+Custom Memory - Fair
+
+	- Uses a heuristic based on proportion of the current process' remaining time
+	  to the total completion time when allocating memory. 
+
+	- Aims to avoid excessive page faults for longer processes.
+
+	- Evicts pages from other processes in a distributed manner rather than least recent.
+
+	- Performs best when there is one process in the queue that is disproportionately
+	  high in job time and memory requirement compared to other processes.
+
+	- Performs badly when processes with high memory requirement and low job
+	  time are present due to excessive page faults.
