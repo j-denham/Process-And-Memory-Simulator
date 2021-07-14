@@ -4,10 +4,28 @@ Program investigates performance of a variety of scheduling and memory managemen
 outputs information about its state whenever a process starts, finishes, or pages are evicted from memory, along with performance statistics once 
 all processes have been finished.
 
+For a much more
+detailed outline of the project, see ` project2.pdf`. See `report.txt` for a short explanation of the custom scheduling and memory management
+algorithms and the situations where they perform better.
 
-![Scheduler Output](./images/scheduler-output.png)
+#### Project Structure
+* `scheduler.c` and its accompanying header file contain all scheduling algorithms, memory management algorithms and option parsing
+for the various flags that may be passed.
+* `process-deque.c`and its accompanying header file contain the doubly linked list data structure and accompanying helper functions used by scheduler.
+This linked list serves as a queue for incoming processes in the simulation, and allows for sorting of elements to accomdate use as a priority queue.
+* `memory.c` and its accompanying header file contain the Memory struct and all helper functions pertaining to simulating memory management. These
+functions are used throughout the scheduling and memory management algorithms contained in `scheduler.c`
+* `statistics.c` and its accompanying header file contain the Statistics struct and all functions concerned with updating and calculating the final
+statistics outputted by the program when all processes have finished.
+* `benchmark-*.txt` files contain process data where the custom scheduling (shortest first) and custom memory management (fair
+allocation) algorithms out-perform the algorithms given in the spec
+* `tests/cases/` contain test input, and the correct output, for various combinations of scheduling and memory management algorithms
+* All other test files (apart from `report.txt`) contain process data for tests given in `tests/cases/`.
+
 
 #### Output
+![Scheduler Output](./images/scheduler-output.png)
+
 * Each line of output (apart from the final performance statistics) begins with a timestamp of the event
 * Whenever the scheduler switches processes, it outputs a line with the `RUNNING` field, along with:
   - Process id
@@ -35,6 +53,3 @@ field, along with the addresses of the pages that were evicted
 * Virtual Memory
 * Custom Memory Management: Fair Memory Allocation
 
-For a much more
-detailed outline of the project, see ` project2.pdf`. See `report.txt` for a short explanation of the custom scheduling and memory management
-algorithms and the situations where they perform better.
